@@ -21,6 +21,7 @@
 #include "../../include/str_arr_q.h"
 #include "../../include/greedy_dp_q.h"
 #include "../../include/back_track_q.h"
+#include "../../include/linked_list_q.h"
 
 #define MODULE_ID "LeetCodeMain"
 

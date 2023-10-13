@@ -1,4 +1,4 @@
-Question List (in C)
+Leetcode Question List (in C)
 ----------------------------
 
 ## 前缀和 && Hash && Heap
@@ -106,6 +106,9 @@ Question List (in C)
 - 84: 柱状图中最大的矩形 [ans](./include/array/largest_rectangle_his.h)[medium]
 - 962: 最大宽度坡 [ans](./include/array/max_width_ramp.h)[medium]
 
+## 链表
+- 160：相交链表 [ans](./src/linked_list_q/intersection_linked_list.c)[easy]
+    - 暴力一些，直接用hashmap存node的指针
 ## 双指针
 - 11: 盛最多水的容器 [ans](./include/two_pointer/container_with_most_water.h)[medium]
 - 876: 链表的中间结点 [ans](./include/two_pointer/)[easy]
