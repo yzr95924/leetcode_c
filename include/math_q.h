@@ -65,4 +65,11 @@ int* plusOne(int* digits, int digitsSize, int* returnSize);
  */
 void setZeroes(int** matrix, int matrixSize, int* matrixColSize);
 
+/**
+ * @brief 136. 只出现一次的数字
+ * @cite https://leetcode.cn/problems/single-number/description/
+ *
+ */
+int singleNumber(int* nums, int numsSize);
+
 #endif

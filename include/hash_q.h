@@ -30,6 +30,13 @@ char ***groupAnagrams(char ** strs, int strsSize, int* returnSize, int** returnC
 int longestConsecutive(int* nums, int numsSize);
 
 /**
+ * @brief 169. 多数元素
+ * @cite https://leetcode.cn/problems/majority-element/description/
+ *
+ */
+int majorityElement(int* nums, int numsSize);
+
+/**
  * @brief 239. 滑动窗口最大值
  * @cite https://leetcode.cn/problems/sliding-window-maximum
  *

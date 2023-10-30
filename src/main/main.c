@@ -26,9 +26,10 @@
 #define MODULE_ID "LeetCodeMain"
 
 int main(int argc, char* argv[]) {
-    int nums[] = {1, 2, 3};
-    int returnSize = 0;
-    int* retCol = NULL;
-    subsets_78(nums, ARRAY_SIZE(nums), &returnSize, &retCol);
+    uint32_t flag = 0;
+    if (!flag) {
+        ZUORU_LOGGING(INFO_LOG_LEVEL, "enter\n");
+    }
+
     return 0;
 }

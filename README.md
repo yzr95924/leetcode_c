@@ -6,6 +6,8 @@ Leetcode Question List (in C)
     - 字符串内部排序作为key + hashMap统计
 - 128: 最长连续序列 [ans](./src/hash_q/long_con_seq.c)[medium]
     - hashMap数组去重 + 遍历x, x+1, x+2, ... + 检查 x-1是否存在，避免重复扫描
+- 169: 多数元素 [ans](./src/hash_q/major_element.c)[easy]
+    - hashMap计数 + 遍历统计
 - 239: 滑动窗口最大值 [ans](./src/hash_q/max_slide_win.c)[hard]
     - MaxHeap: 插入右边的item + item (val, idx) + idx判断是否在win里面
 - 523: 连续的子数组和 [ans](./include/array/cont_subarray_sum.h)[medium]
@@ -119,6 +121,7 @@ Leetcode Question List (in C)
 - 4: 寻找两个正序数组的中位数 [ans](./include/math/median_two_sorted_array.h)[hard]
 - 7: 整数反转 [ans](./include/math/reverse_integer.h)[medium]
 - 9: 回文数 [ans](./src/math_q/palindrome_num.c)[easy]
+- 13: 罗马数字转整数 [ans](./src/math/roman_2_int.c)[easy]
 - 41: 缺失的第一个正数 [ans](./src/math_q/first_miss_positive.c)[hard]
     - 原地hash: f(nums[i]) = nums[i] - 1
 - 48: 旋转图像 [ans](./src/math_q//rotate_image.c)[medium]
@@ -128,7 +131,8 @@ Leetcode Question List (in C)
 - 66: 加一 [ans](./src/math_q/plus_one.c)[easy]
 - 73: 矩阵置零 [ans](./src/math_q/set_matrix_zero.c)[medium]
     - 标记数组: 行标记 + 列标记 + 遍历判断
-- 13: 罗马数字转整数 [ans](./src/math/roman_2_int.c)[easy]
+- 136: 只出现一次的数字 [ans](./src/math_q/single_number.c)[easy]
+    - 异或: 相同为0，不同为1, 出现两次的数直接消掉
 - 238: 除自身以外数组的乘积 [ans](./src/math_q/prod_except_self.c)[medium]
     - 构建左边的乘法表 * 右边的乘法表，转成O(n)
 - 1089: 复写零 [ans](./include/math/duplicate_zeros.h)[easy]
