@@ -65,6 +65,8 @@ Leetcode Question List (in C)
     - 二分查找
 - 74: 搜索二维矩阵 [ans](./src/find_sort_q/search_2d_mat.c)[medium]
     - 两次二分查找
+- 75: 颜色分类 [ans](./src/find_sort_q/color_classify.c)[medium]
+    - 维护一个头部的index，不断交换对应的数字到头部的index，排完0和1，2自然就排序好了
 - 56: 合并区间 [ans](./src/find_sort_q/merge_intervals.c)[medium]
     - 先sort区间的leftBound，然后再遍历，看是否需要合并
 - 240: 搜索二维矩阵 II [ans](./src/find_sort_q/search_2d_mat_2.c)[medium]

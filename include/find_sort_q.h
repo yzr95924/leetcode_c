@@ -51,6 +51,13 @@ int** merge_56(int** intervals, int intervalsSize, int* intervalsColSize, int* r
 bool searchMatrix_74(int** matrix, int matrixSize, int* matrixColSize, int target);
 
 /**
+ * @brief 75. 颜色分类
+ * @cite https://leetcode.cn/problems/sort-colors/
+ *
+ */
+void sortColors_75(int* nums, int numsSize);
+
+/**
  * @brief 240. 搜索二维矩阵 II
  * @cite https://leetcode.cn/problems/search-a-2d-matrix-ii/
  *
