@@ -21,7 +21,7 @@ typedef struct {
     int capacity;
 } ZUORU_Stack;
 
-ZUORU_Stack* ZUORU_InitStack(int capacity)
+static ZUORU_Stack* ZUORU_InitStack(int capacity)
 {
     ZUORU_Stack *stackPtr = (ZUORU_Stack*)calloc(1, sizeof(ZUORU_Stack));
     stackPtr->data = (ZUORU_DataItem*)calloc(capacity, sizeof(ZUORU_DataItem));
@@ -32,14 +32,14 @@ ZUORU_Stack* ZUORU_InitStack(int capacity)
     return stackPtr;
 }
 
-void ZUORU_FreeStack(ZUORU_Stack *stackPtr)
+static void ZUORU_FreeStack(ZUORU_Stack *stackPtr)
 {
     free(stackPtr->data);
     free(stackPtr);
     return;
 }
 
-bool ZUORU_IsFullStack(ZUORU_Stack *stackPtr)
+static bool ZUORU_IsFullStack(ZUORU_Stack *stackPtr)
 {
     if (stackPtr->stackTopIdx == (stackPtr->capacity - 1)) {
         return true;
@@ -47,7 +47,7 @@ bool ZUORU_IsFullStack(ZUORU_Stack *stackPtr)
     return false;
 }
 
-bool ZUORU_IsEmptyStack(ZUORU_Stack *stackPtr)
+static bool ZUORU_IsEmptyStack(ZUORU_Stack *stackPtr)
 {
     if (stackPtr->stackTopIdx == MY_DATA_STRUCT_EMPTY_POS) {
         return true;
@@ -55,7 +55,7 @@ bool ZUORU_IsEmptyStack(ZUORU_Stack *stackPtr)
     return false;
 }
 
-bool ZUORU_PushStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *inVal)
+static bool ZUORU_PushStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *inVal)
 {
     if (ZUORU_IsFullStack(stackPtr)) {
         fprintf(stderr, "stack is full\n");
@@ -68,7 +68,7 @@ bool ZUORU_PushStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *inVal)
     return true;
 }
 
-bool ZUORU_PopStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *outVal)
+static bool ZUORU_PopStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *outVal)
 {
     if (ZUORU_IsEmptyStack(stackPtr)) {
         fprintf(stderr, "stack is empty\n");
@@ -82,7 +82,7 @@ bool ZUORU_PopStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *outVal)
     return true;
 }
 
-bool ZUORU_TopStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *outVal)
+static bool ZUORU_TopStack(ZUORU_Stack *stackPtr, ZUORU_DataItem *outVal)
 {
     if (ZUORU_IsEmptyStack(stackPtr)) {
         fprintf(stderr, "stack is empty");

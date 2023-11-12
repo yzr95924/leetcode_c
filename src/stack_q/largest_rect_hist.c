@@ -27,7 +27,7 @@ typedef struct {
     int capacity;
 } ZUORU_Stack;
 
-ZUORU_Stack* ZUORU_InitStack(int capacity)
+static ZUORU_Stack* ZUORU_InitStack(int capacity)
 {
     ZUORU_Stack *stackPtr = (ZUORU_Stack*)calloc(1, sizeof(ZUORU_Stack));
     stackPtr->data = (ZUORU_DataItem*)calloc(capacity, sizeof(ZUORU_DataItem));

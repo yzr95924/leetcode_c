@@ -1,15 +1,15 @@
 /**
- * @file min_depth_bin_tree.c
+ * @file level_order_trav.c
  * @author Zuoru YANG (zryang@cse.cuhk.edu.hk)
- * @brief https://leetcode.cn/problems/minimum-depth-of-binary-tree/
+ * @brief https://leetcode.cn/problems/binary-tree-level-order-traversal/description/
  * @version 0.1
- * @date 2023-07-05
+ * @date 2023-07-06
  *
  * @copyright Copyright (c) 2023
  *
  */
 
-#include "../../include/bfs_q.h"
+#include "../../include/bfs_tree_q.h"
 
 #define MY_DATA_STRUCT_EMPTY_POS (-1)
 
@@ -23,7 +23,7 @@ typedef struct {
     int curSize;
 } ZUORU_Queue;
 
-ZUORU_Queue* ZUORU_InitQueue(int capacity)
+static ZUORU_Queue* ZUORU_InitQueue(int capacity)
 {
     ZUORU_Queue *queuePtr = (ZUORU_Queue*)calloc(1, sizeof(ZUORU_Queue));
     queuePtr->data = (ZUORU_DataItem*)calloc(capacity, sizeof(ZUORU_DataItem));
@@ -35,7 +35,7 @@ ZUORU_Queue* ZUORU_InitQueue(int capacity)
     return queuePtr;
 }
 
-bool ZUORU_EnQueue(ZUORU_Queue *queuePtr, ZUORU_DataItem *inVal)
+static bool ZUORU_EnQueue(ZUORU_Queue *queuePtr, ZUORU_DataItem *inVal)
 {
     if (queuePtr->curSize + 1 > queuePtr->capacity) {
         fprintf(stderr, "queue is full\n");
@@ -52,7 +52,7 @@ bool ZUORU_EnQueue(ZUORU_Queue *queuePtr, ZUORU_DataItem *inVal)
     return true;
 }
 
-bool ZUORU_DeQueue(ZUORU_Queue *queuePtr, ZUORU_DataItem *outVal)
+static bool ZUORU_DeQueue(ZUORU_Queue *queuePtr, ZUORU_DataItem *outVal)
 {
     if (queuePtr->curSize == 0) {
         fprintf(stderr, "queue is empty\n");
@@ -70,15 +70,7 @@ bool ZUORU_DeQueue(ZUORU_Queue *queuePtr, ZUORU_DataItem *outVal)
     return true;
 }
 
-bool ZUORU_IsFullQueue(ZUORU_Queue *queuePtr)
-{
-    if (queuePtr->curSize == queuePtr->capacity) {
-        return true;
-    }
-    return false;
-}
-
-bool ZUORU_IsEmptyQueue(ZUORU_Queue *queuePtr)
+static bool ZUORU_IsEmptyQueue(ZUORU_Queue *queuePtr)
 {
     if (queuePtr->curSize == 0) {
         return true;
@@ -86,32 +78,55 @@ bool ZUORU_IsEmptyQueue(ZUORU_Queue *queuePtr)
     return false;
 }
 
-void ZUORU_FreeQueue(ZUORU_Queue *queuePtr)
+static void ZUORU_FreeQueue(ZUORU_Queue *queuePtr)
 {
     free(queuePtr->data);
     free(queuePtr);
     return;
 }
 
-int minDepth(struct TreeNode* root)
+/**
+ * @brief Binary Tree Level Order Traversal
+ *
+ * @param root root ptr
+ * @param returnSize return array
+ * @param returnColumnSizes
+ * @return int**
+ */
+int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes)
 {
+    int **retArr = NULL;
+    int maxLevelNodeNum = 2000 / 2;
+    int maxLevel = 2000;
+    *returnSize = 0;
+    int curLevel = 0;
+    int curLevelIdx = 0;
+
     if (root == NULL) {
-        return 0;
+        return NULL;
     }
 
-    ZUORU_Queue *myQueuePtr = ZUORU_InitQueue(100000);
+    retArr = (int**)calloc(maxLevel, sizeof(int*));
+    for (int idx = 0; idx < maxLevel; idx++) {
+        retArr[idx] = (int*)calloc(maxLevelNodeNum, sizeof(int));
+    }
+    *returnColumnSizes = (int*)calloc(maxLevel, sizeof(int));
+
+    ZUORU_Queue *myQueuePtr = ZUORU_InitQueue(maxLevel);
     ZUORU_EnQueue(myQueuePtr, root);
-    int depth = 1;
 
     struct TreeNode tmpTreeNode;
-    while (!ZUORU_IsEmptyQueue(myQueuePtr)) {
+    while(!ZUORU_IsEmptyQueue(myQueuePtr)) {
         int curQueueSize = myQueuePtr->curSize;
 
         for (int idx = 0; idx < curQueueSize; idx++) {
             ZUORU_DeQueue(myQueuePtr, &tmpTreeNode);
+            (*returnColumnSizes)[curLevel]++;
+            retArr[curLevel][curLevelIdx] = tmpTreeNode.val;
+            curLevelIdx++;
+
             if (tmpTreeNode.left == NULL && tmpTreeNode.right == NULL) {
-                ZUORU_FreeQueue(myQueuePtr);
-                return depth;
+                continue;
             }
             if (tmpTreeNode.left != NULL) {
                 ZUORU_EnQueue(myQueuePtr, tmpTreeNode.left);
@@ -120,9 +135,12 @@ int minDepth(struct TreeNode* root)
                 ZUORU_EnQueue(myQueuePtr, tmpTreeNode.right);
             }
         }
-        depth++;
+        curLevel++;
+        curLevelIdx = 0;
+        (*returnSize)++;
     }
 
     ZUORU_FreeQueue(myQueuePtr);
-    return depth;
+
+    return retArr;
 }

@@ -1,5 +1,5 @@
 /**
- * @file bfs_q.h
+ * @file bfs_tree_q.h
  * @author Zuoru YANG (zryang@cse.cuhk.edu.hk)
  * @brief the question set of BFS
  * @version 0.1
@@ -14,16 +14,31 @@
 
 #include "../common_include/c_include.h"
 
-/**
- * @brief 111. Minimum Depth of Binary Tree
- * @cite https://leetcode.cn/problems/minimum-depth-of-binary-tree/
- *
- */
 struct TreeNode {
      int val;
      struct TreeNode *left;
      struct TreeNode *right;
 };
+
+/**
+ * @brief 94. 二叉树的中序遍历
+ * @cite https://leetcode.cn/problems/binary-tree-inorder-traversal/
+ *
+ */
+int* inorderTraversal(struct TreeNode* root, int* returnSize);
+
+/**
+ * @brief 104. 二叉树的最大深度
+ * @cite https://leetcode.cn/problems/maximum-depth-of-binary-tree/description
+ *
+ */
+int maxDepth(struct TreeNode* root);
+
+/**
+ * @brief 111. Minimum Depth of Binary Tree
+ * @cite https://leetcode.cn/problems/minimum-depth-of-binary-tree/
+ *
+ */
 int minDepth(struct TreeNode *root);
 
 /**
