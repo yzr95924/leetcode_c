@@ -140,12 +140,12 @@ Leetcode Question List (in C)
 - 1089: 复写零 [ans](./include/math/duplicate_zeros.h)[easy]
 
 ## BFS && 树
-- 94: 二叉树的中序遍历 [ans](./src/bfs_q/binary_tree_inorder_traversal.c)[easy]
+- 94: 二叉树的中序遍历 [ans](./src/bfs_tree_q/binary_tree_inorder_traversal.c)[easy]
     - 基本递归遍历流程
-- 102: 二叉树的层序遍历 [ans](./src/bfs_q/level_order_trav.c)[medium]
-- 104: 二叉树的最大深度 [ans](./src/bfs_q/max_depth_bin_tree.c)[easy]
-
-- 111: 二叉树的最小深度 [ans](./src/bfs_q/min_depth_bin_tree.c)[easy]
+- 102: 二叉树的层序遍历 [ans](./src/bfs_tree_q/level_order_trav.c)[medium]
+- 104: 二叉树的最大深度 [ans](./src/bfs_tree_q/max_depth_bin_tree.c)[easy]
+    - 基本层序遍历，用队列
+- 111: 二叉树的最小深度 [ans](./src/bfs_tree_q/min_depth_bin_tree.c)[easy]
 - 127: 单词接龙 [ans](./include/bfs/word_ladder.h)[hard]
 - 139: 单词拆分 [ans](./include/bfs/word_break.h)[medium]
 - 815: 公交路线 [ans](./include/bfs/bus_routes.h)[hard]
