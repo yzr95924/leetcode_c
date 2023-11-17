@@ -23,13 +23,47 @@
 #include "../../include/back_track_q.h"
 #include "../../include/linked_list_q.h"
 
+#include "../../common_include/c_my_vector.h"
+
 #define MODULE_ID "LeetCodeMain"
 
 int main(int argc, char* argv[]) {
-    uint32_t flag = 0;
-    if (!flag) {
-        ZUORU_LOGGING(INFO_LOG_LEVEL, "enter\n");
+    Vector *gVector = VectorInit(100);
+
+    VectorDataItem tmpItem;
+    tmpItem.key = 2; tmpItem.value = 3;
+    VectorPushBack(gVector, &tmpItem);
+    tmpItem.key = 2; tmpItem.value = 2;
+    VectorPushBack(gVector, &tmpItem);
+    tmpItem.key = 1; tmpItem.value = 3;
+    VectorPushBack(gVector, &tmpItem);
+    tmpItem.key = 0; tmpItem.value = 4;
+    VectorPushBack(gVector, &tmpItem);
+    tmpItem.key = 3; tmpItem.value = 4;
+    VectorPushBack(gVector, &tmpItem);
+    tmpItem.key = 9; tmpItem.value = 4;
+    VectorPushBack(gVector, &tmpItem);
+
+    for (int idx = 0; idx < gVector->size; idx++) {
+        ZUORU_LOGGING(INFO_LOG_LEVEL, "key: %d. val: %d\n",
+            gVector->data[idx].key, gVector->data[idx].value);
     }
 
+    VectorSortByKeyValue(gVector);
+
+    ZUORU_LOGGING(INFO_LOG_LEVEL, "After sort:\n");
+    for (int idx = 0; idx < gVector->size; idx++) {
+        ZUORU_LOGGING(INFO_LOG_LEVEL, "key: %d. val: %d\n",
+            gVector->data[idx].key, gVector->data[idx].value);
+    }
+
+    VectorDel(gVector, 9);
+    ZUORU_LOGGING(INFO_LOG_LEVEL, "After del:\n");
+    for (int idx = 0; idx < gVector->size; idx++) {
+        ZUORU_LOGGING(INFO_LOG_LEVEL, "key: %d. val: %d\n",
+            gVector->data[idx].key, gVector->data[idx].value);
+    }
+
+    VectorFree(gVector);
     return 0;
 }
