@@ -64,6 +64,14 @@ int main(int argc, char* argv[]) {
             gVector->data[idx].key, gVector->data[idx].value);
     }
 
+    tmpItem.key = 100; tmpItem.value = 1;
+    VectorInsert(gVector, &tmpItem, gVector->size - 1);
+    ZUORU_LOGGING(INFO_LOG_LEVEL, "After insert:\n");
+    for (int idx = 0; idx < gVector->size; idx++) {
+        ZUORU_LOGGING(INFO_LOG_LEVEL, "key: %d. val: %d\n",
+            gVector->data[idx].key, gVector->data[idx].value);
+    }
+
     VectorFree(gVector);
     return 0;
 }
